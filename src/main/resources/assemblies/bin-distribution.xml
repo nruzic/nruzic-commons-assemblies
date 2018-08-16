@@ -1,0 +1,141 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+    <id>bin</id>
+
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>${assemblies-bin-distribution-base-directory}</baseDirectory>
+
+    <!-- Define distribution formats -->
+    <formats>
+        <format>zip</format>
+        <format>tar.gz</format>
+        <format>tar.bz2</format>
+    </formats>
+
+    <!-- Copy files and dirs -->
+    <fileSets>
+        <fileSet>
+            <includes>
+                <include>README*</include>
+                <include>LICENSE*</include>
+                <include>NOTICE*</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>${build.directory}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>*.jar</include>
+                <include>*.ear</include>
+                <include>*.war</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/config</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>../target/site</directory>
+            <outputDirectory>doc</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/doc</directory>
+            <outputDirectory>doc</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+    <!-- Add dependencies -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+    <moduleSets>
+        <moduleSet>
+
+            <!-- Enable access to all projects in the current multimodule build! -->
+            <useAllReactorProjects>true</useAllReactorProjects>
+
+            <!-- Now, select which projects to include in this module-set. -->
+            <excludes>
+                <exclude>*:*-test</exclude>
+                <exclude>*:*-distribution</exclude>
+                <exclude>*:*-mock</exclude>
+            </excludes>
+
+            <sources>
+
+                <includeModuleDirectory>false</includeModuleDirectory>
+
+                <fileSets>
+                    <fileSet>
+                        <directory>src/main/bin</directory>
+                        <outputDirectory>bin</outputDirectory>
+                        <filtered>true</filtered>
+                    </fileSet>
+                    <fileSet>
+                        <directory>src/main/scripts</directory>
+                        <outputDirectory>bin</outputDirectory>
+                        <filtered>true</filtered>
+                    </fileSet>
+                    <fileSet>
+                        <directory>src/main/config</directory>
+                        <outputDirectory>config</outputDirectory>
+                        <filtered>true</filtered>
+                    </fileSet>
+                    <fileSet>
+                        <directory>src/main/resources</directory>
+                        <outputDirectory>config</outputDirectory>
+                        <filtered>true</filtered>
+                    </fileSet>
+                    <fileSet>
+                        <directory>src/main/doc</directory>
+                        <outputDirectory>doc</outputDirectory>
+                    </fileSet>
+                </fileSets>
+            </sources>
+        </moduleSet>
+
+        <moduleSet>
+
+            <!-- Enable access to all projects in the current multimodule build! -->
+            <useAllReactorProjects>true</useAllReactorProjects>
+
+            <sources>
+
+                <includeModuleDirectory>false</includeModuleDirectory>
+
+                <fileSets>
+                    <fileSet>
+                        <directory>${build.directory}/site</directory>
+                        <outputDirectory>doc/${module.artifactId}</outputDirectory>
+                    </fileSet>
+                </fileSets>
+            </sources>
+        </moduleSet>
+
+    </moduleSets>
+
+</assembly>

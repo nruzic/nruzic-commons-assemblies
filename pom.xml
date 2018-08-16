@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>hr.nruzic.commons.assemblies</groupId>
+    <artifactId>nruzic-commons-assemblies</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>nruzic commons assemblies</name>
+    <description>Common maven assembly plugin definitions for java projects</description>
+    <url>https://github.com/nruzic/nruzic-commons-assemblies</url>
+
+    <scm>
+        <url>https://github.com/nruzic/nruzic-commons-assemblies</url>
+        <connection>scm:git:https://github.com/nruzic/nruzic-commons-assemblies</connection>
+        <developerConnection>scm:git:https://github.com/nruzic/nruzic-commons-assemblies</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>nruzic</id>
+            <name>Nikola Ružić</name>
+            <email>nikola.ruzic.dev@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+</project>

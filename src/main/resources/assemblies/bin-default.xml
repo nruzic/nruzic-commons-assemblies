@@ -1,0 +1,129 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+    <id>bin</id>
+
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>${project.artifactId}</baseDirectory>
+
+    <!-- Define distribution formats -->
+    <formats>
+        <format>zip</format>
+        <format>tar.gz</format>
+    </formats>
+
+    <!-- Copy single files -->
+    <files>
+        <!-- We need at least one file -->
+        <file>
+            <source>pom.xml</source>
+        </file>
+    </files>
+
+    <!-- Copy directories -->
+    <fileSets>
+        <!-- README and similar files grom base dir -->
+        <fileSet>
+            <includes>
+                <include>README*</include>
+                <include>LICENSE*</include>
+                <include>NOTICE*</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+        <!-- Basic binary files from base dir -->
+        <fileSet>
+            <directory>${build.directory}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>*.jar</include>
+                <include>*.ear</include>
+                <include>*.war</include>
+            </includes>
+        </fileSet>
+        <!-- Binary files -->
+        <fileSet>
+            <directory>bin</directory>
+            <outputDirectory>bin</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+        </fileSet>
+        <!-- Script files -->
+        <fileSet>
+            <directory>scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <!-- Configuration files -->
+        <fileSet>
+            <directory>config</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/config</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/config</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <!-- Resource files -->
+        <fileSet>
+            <directory>resources</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/resources</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>config</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        <!-- Documentation files -->
+        <fileSet>
+            <directory>doc</directory>
+            <outputDirectory>doc</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/doc</directory>
+            <outputDirectory>doc</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/doc</directory>
+            <outputDirectory>doc</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+    <!-- Add dependencies -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
