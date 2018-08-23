@@ -1,0 +1,3 @@
+= Common assemblies for my own Java projects
+
+Common assemblies configurations used by tools to assemble projects.
