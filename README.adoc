@@ -26,4 +26,4 @@
 
 Common assemblies configurations used by tools to assemble projects.
 
-Collection of usefull predefined maven assembly plugin configurations.
+This project just contains usefull collection of predefined maven assembly plugin configurations.
